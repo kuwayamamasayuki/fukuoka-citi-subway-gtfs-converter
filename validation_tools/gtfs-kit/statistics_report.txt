@@ -1,0 +1,32 @@
+福岡市地下鉄GTFS分析レポート
+========================================
+生成日時: 2025-07-07 09:26:19
+
+基本統計:
+                           indicator       value
+0                           agencies    [福岡市交通局]
+1                           timezone  Asia/Tokyo
+2                         start_date    20250101
+3                           end_date    20251231
+4                         num_routes           4
+5                          num_trips        2250
+6                          num_stops          37
+7                         num_shapes           0
+8                        sample_date    20250109
+9   num_routes_active_on_sample_date           3
+10   num_trips_active_on_sample_date         786
+11   num_stops_active_on_sample_date          36
+
+路線別統計:
+  空港線: 福岡市地下鉄空港線
+  箱崎線: 福岡市地下鉄箱崎線
+  空港箱崎線: 福岡市地下鉄空港線・箱崎線直通
+  七隈線: 福岡市地下鉄七隈線
+
+総駅数: 37
+総トリップ数: 2250
+
+サービス別トリップ数:
+  friday: 792トリップ
+  weekday: 786トリップ
+  weekend: 672トリップ
