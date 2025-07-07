@@ -197,3 +197,64 @@ python validate_gtfs.py gtfs_output
 ## 貢献
 
 バグ報告や機能改善の提案は、GitHubのIssueまたはPull Requestでお願いします。
+
+## GTFS検証・可視化ツール
+
+生成されたGTFSデータの検証・可視化のため、以下のツールを利用できます。
+
+### 利用可能なツール
+
+各ツールの詳細な使用方法は `validation_tools/` フォルダ内の各READMEファイルを参照してください。
+
+#### 1. transitfeed
+- **用途**: GTFS仕様準拠の検証
+- **フォルダ**: `validation_tools/transitfeed/`
+- **注意**: Python 2.x用のため、Python 3.12では互換性問題あり
+
+#### 2. gtfs-to-html
+- **用途**: 時刻表のHTML可視化
+- **フォルダ**: `validation_tools/gtfs-to-html/`
+- **特徴**: レスポンシブデザイン、路線別時刻表
+
+#### 3. OpenTripPlanner (OTP)
+- **用途**: 経路検索・地図可視化
+- **フォルダ**: `validation_tools/opentripplanner/`
+- **特徴**: インタラクティブ地図、経路検索API
+
+#### 4. static-GTFS-manager
+- **用途**: GTFSデータの編集・管理
+- **フォルダ**: `validation_tools/static-gtfs-manager/`
+- **特徴**: Webベースの編集インターフェース
+
+#### 5. GTFS Validator
+- **用途**: 包括的なGTFS検証（公式ツール）
+- **フォルダ**: `validation_tools/gtfs-validator/`
+- **特徴**: HTMLレポート、JSON出力
+
+#### 6. gtfs-kit
+- **用途**: Pythonベースのデータ分析・統計
+- **フォルダ**: `validation_tools/gtfs-kit/`
+- **特徴**: 路線図生成、運行頻度分析
+
+### 検証結果例
+
+gtfs-kitによる分析結果：
+- 4路線（空港線、箱崎線、直通線、七隈線）
+- 2,250トリップ
+- 37駅（座標付き）
+- 3つのサービスパターン（平日・金曜・土休日）
+
+### 使用方法
+
+```bash
+# 各ツールのフォルダに移動
+cd validation_tools/gtfs-kit
+
+# 依存関係のインストール
+pip install gtfs-kit folium matplotlib
+
+# 分析実行
+python analyze_fukuoka_gtfs.py
+```
+
+詳細な使用方法は各ツールのREADMEファイルを参照してください。

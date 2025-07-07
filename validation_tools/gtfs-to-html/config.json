@@ -1,0 +1,28 @@
+{
+  "agencies": [
+    {
+      "agency_key": "fukuoka_subway",
+      "path": "../../gtfs_output"
+    }
+  ],
+  "verbose": true,
+  "zipOutput": false,
+  "outputFormat": "html",
+  "templatePath": "templates/",
+  "assetPath": "assets/",
+  "log": "info",
+  "logFunction": "console.log",
+  "beautify": true,
+  "noHead": false,
+  "menuType": "jump",
+  "templateFileName": "timetable_page.html",
+  "noServiceSymbol": "-",
+  "requestStopSymbol": "◯",
+  "continuesAsSymbol": "→",
+  "showMap": true,
+  "showStopCity": false,
+  "showArrivalOnTimepoint": false,
+  "showRouteTitle": true,
+  "allowEmptyTimetables": false,
+  "skipImport": false
+}
