@@ -14,9 +14,8 @@ def get_fukuoka_subway_stations():
     overpass_query = """
     [out:json][timeout:60];
     (
-      relation["network"="福岡市地下鉄"]["route"="subway"];
-      way(r)["railway"="subway"];
-      node(w)["railway"="station"];
+      node["railway"="station"](33.5,130.2,33.7,130.6);
+      node["public_transport"="station"](33.5,130.2,33.7,130.6);
     );
     out geom;
     """
@@ -33,16 +32,22 @@ def get_fukuoka_subway_stations():
                 if element.get('type') == 'node' and 'tags' in element:
                     tags = element['tags']
                     if 'name' in tags:
-                        station = {
-                            'name': tags['name'],
-                            'name_en': tags.get('name:en', ''),
-                            'lat': element['lat'],
-                            'lon': element['lon'],
-                            'operator': tags.get('operator', ''),
-                            'line': tags.get('line', ''),
-                            'railway': tags.get('railway', '')
-                        }
-                        stations.append(station)
+                        name = tags['name']
+                        operator = tags.get('operator', '')
+                        network = tags.get('network', '')
+                        
+                        if ('福岡' in operator or '福岡' in network or 
+                            name in ['天神', '博多', '姪浜', '貝塚', '中洲川端', '祇園', '赤坂']):
+                            station = {
+                                'name': tags['name'],
+                                'name_en': tags.get('name:en', ''),
+                                'lat': element['lat'],
+                                'lon': element['lon'],
+                                'operator': tags.get('operator', ''),
+                                'line': tags.get('line', ''),
+                                'railway': tags.get('railway', '')
+                            }
+                            stations.append(station)
             
             print(f"Found {len(stations)} stations from OpenStreetMap")
             return stations
@@ -106,23 +111,17 @@ def create_station_mapping():
         '馬出九大病院前': {'lat': 33.5972, 'lon': 130.4978, 'name_en': 'Maidashi-kyudai-byoin-mae'},
         '千代県庁口': {'lat': 33.6006, 'lon': 130.5111, 'name_en': 'Chiyo-kencho-guchi'},
         '呉服町': {'lat': 33.6039, 'lon': 130.5244, 'name_en': 'Gofukumachi'},
-        '中洲川端': {'lat': 33.5806, 'lon': 130.4311, 'name_en': 'Nakasu-kawabata'},
-        '天神': {'lat': 33.5772, 'lon': 130.4178, 'name_en': 'Tenjin'},
-        '赤坂': {'lat': 33.5739, 'lon': 130.4044, 'name_en': 'Akasaka'},
-        '大濠公園': {'lat': 33.5706, 'lon': 130.3911, 'name_en': 'Ohori-koen'},
-        '唐人町': {'lat': 33.5672, 'lon': 130.3778, 'name_en': 'Tojinmachi'},
-        '西新': {'lat': 33.5639, 'lon': 130.3644, 'name_en': 'Nishijin'},
-        '藤崎': {'lat': 33.5606, 'lon': 130.3511, 'name_en': 'Fujisaki'},
-        '室見': {'lat': 33.5572, 'lon': 130.3378, 'name_en': 'Muromi'},
-        '姪浜': {'lat': 33.5539, 'lon': 130.3244, 'name_en': 'Meinohama'},
         '福岡空港': {'lat': 33.5856, 'lon': 130.4508, 'name_en': 'Fukuoka-kuko'},
         '東比恵': {'lat': 33.5822, 'lon': 130.4372, 'name_en': 'Higashi-hie'},
         '筑前前原': {'lat': 33.5506, 'lon': 130.2011, 'name_en': 'Chikuzen-maebaru'}
     }
     
     for name, coords in manual_mappings.items():
-        if name not in station_mapping:
-            station_mapping[name] = coords
+        station_mapping[name] = {
+            'lat': float(coords['lat']),
+            'lon': float(coords['lon']),
+            'name_en': coords['name_en']
+        }
     
     return station_mapping
 

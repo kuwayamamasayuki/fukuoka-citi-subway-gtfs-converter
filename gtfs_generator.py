@@ -155,8 +155,8 @@ class GTFSGenerator:
             stop = {
                 'stop_id': stop_id,
                 'stop_name': station_name,
-                'stop_lat': coords.get('lat', 33.5904),
-                'stop_lon': coords.get('lon', 130.4017),
+                'stop_lat': f"{coords.get('lat', 33.5904):.4f}",
+                'stop_lon': f"{coords.get('lon', 130.4017):.4f}",
                 'location_type': '0',
                 'parent_station': ''
             }

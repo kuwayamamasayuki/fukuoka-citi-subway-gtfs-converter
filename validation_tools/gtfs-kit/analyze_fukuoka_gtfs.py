@@ -13,7 +13,8 @@ def analyze_fukuoka_gtfs():
     
     print("福岡市地下鉄GTFSデータの分析を開始...")
     
-    feed = gk.read_feed("../../gtfs_output", dist_units='km')
+    gtfs_path = "/home/ubuntu/fukuoka_gtfs/gtfs_output"
+    feed = gk.read_feed(gtfs_path, dist_units='km')
     
     print("\n=== 基本統計 ===")
     description = feed.describe()
