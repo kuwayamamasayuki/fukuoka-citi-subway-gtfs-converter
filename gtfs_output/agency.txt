@@ -1,0 +1,2 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_lang
+fukuoka_subway,福岡市交通局,https://subway.city.fukuoka.lg.jp/,Asia/Tokyo,ja

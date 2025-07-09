@@ -1,0 +1,5 @@
+route_id,agency_id,route_short_name,route_long_name,route_type,route_color,route_text_color
+airport_line,fukuoka_subway,空港線,福岡市地下鉄空港線,1,0066CC,FFFFFF
+hakozaki_line,fukuoka_subway,箱崎線,福岡市地下鉄箱崎線,1,009639,FFFFFF
+airport_hakozaki_line,fukuoka_subway,空港箱崎線,福岡市地下鉄空港線・箱崎線直通,1,0066CC,FFFFFF
+nanakuma_line,fukuoka_subway,七隈線,福岡市地下鉄七隈線,1,FF6600,FFFFFF
